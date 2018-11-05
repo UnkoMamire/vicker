@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 ListFile=${ListFile:-`dirname $0`/list}
-PackName=${PackName:-mypack}
+PackName=${PackName:-vicker}
 
 while read line
 do
@@ -24,5 +24,8 @@ done < $ListFile
 
 if which nvim; then
 	which pip3 && ! (pip3 list --format=legacy | grep "neovim") && pip3 --user install neovim
+	mkdir -p ~/.config
+	ln -sfnv ~/.vim ~/.config/nvim
+	ln -sfnv ~/.vimrc ~/.config/nvim/init.vim
 	nvim +'UpdateRemotePlugins | q'
 fi
