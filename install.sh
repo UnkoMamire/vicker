@@ -23,7 +23,7 @@ do
 done < $ListFile
 
 if which nvim; then
-	which pip3 && ! (pip3 list --format=legacy | grep "neovim") && pip3 --user install neovim
+	which pip3 && ! (pip3 list | grep "pynvim") && pip3 --user install neovim
 	mkdir -p ~/.config
 	ln -sfnv ~/.vim ~/.config/nvim
 	ln -sfnv ~/.vimrc ~/.config/nvim/init.vim
